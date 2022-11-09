@@ -3705,8 +3705,10 @@ MonoBehaviour:
     m_Bits: 8
   wallJumpX: 0
   wallJumpY: 0
-  extraJumps: 1
+  extraJumps: 0
+  jumpCounter: 0
   isDashing: 0
+  dashingPower: 15
   counter: 0
 --- !u!1 &2103504877
 GameObject:

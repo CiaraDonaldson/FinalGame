@@ -19,21 +19,20 @@ public class PlayerController : MonoBehaviour
     private float wallJumpCooldown;
     private float horizontal;
     private float speed = 8f;
-    private float jumpingPower = 20f;
+    
 
     [Header("Jumps")]
-    [SerializeField] private int extraJumps = 2;
-    private int jumpCounter = 0;
-
+    [SerializeField] private float jumpingPower = 10f;
+    public int extraJumps = 2;
+    public int jumpCounter = 0;
 
     [Header("Dash")]
-    private float dashingPower = 10f;
+    public bool isDashing;
+    [SerializeField] private float dashingPower = 15f;
     private float dashingTime = 1f;
     private float dashingCooldown = 1f;
     private bool canDash = true;
-    public bool isDashing;
 
-   
     //public bool isGrounded = true;
     private Animator anim;
     public int counter = 0;
@@ -49,6 +48,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
+
         //Movement
         if (Input.GetKey(KeyCode.D))
         {
@@ -69,15 +69,26 @@ public class PlayerController : MonoBehaviour
         //Jump
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
         {
-            anim.Play("Jump");
             Jump();
         }
 
-        //Adjustable jump height
-        if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0)
+        /*if (Input.GetKeyDown(KeyCode.Space) && !isGrounded())
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
+           
+            Jump();
+
         }
+        else if(jumpCounter > extraJumps)
+        {
+            Debug.Log("STOP");
+        }*/
+
+
+             //Adjustable jump height
+            //if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0)
+            // {
+            //     rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
+            // }
 
 
 
@@ -87,6 +98,12 @@ public class PlayerController : MonoBehaviour
         Flip();
 
 
+    }
+
+    private bool OnWall()
+    {
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
+        return raycastHit.collider != null;
     }
 
     public bool isGrounded()
@@ -149,37 +166,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private bool OnWall()
-    {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
-        return raycastHit.collider != null;
-    }
-
 
     private void Jump()
     {
+        jumpCounter += 1;
 
         if (isGrounded())
         {
             Debug.Log("JUMP");
-            anim.Play("Jump");
+            
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-
-
+            anim.Play("Jump");
         }
 
-        /*if (!isGrounded())
+        /*if (!isGrounded() && jumpCounter < extraJumps)
         {
-            while (jumpCounter > extraJumps)
-            {
-                jumpCounter++;
-                if (Input.GetKeyDown("space"))
-                {
-                    anim.Play("Jump");
-                    rb.velocity = new Vector2(rb.velocity.x, jumpingPower - jumpCounter);
-                }
-            }
+
+            anim.Play("Jump");
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }*/
+
 
         else if (OnWall() && isGrounded())
         {
