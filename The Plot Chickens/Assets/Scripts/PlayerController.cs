@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private CapsuleCollider2D boxCollider;
+    private CircleCollider2D circleCollider;
 
     [Header("Layers")]
     [SerializeField] private LayerMask groundLayer;
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<CapsuleCollider2D>();
+        circleCollider = GetComponent<CircleCollider2D>();
     }
 
     void Update()
@@ -260,13 +262,20 @@ public class PlayerController : MonoBehaviour
         canDash = true;
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnTriggerStay2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "death")
         {
             Debug.Log("dead");
-            anim.Play("Dead");
+            anim.Play("Death");
         }
+
+        if (collider.gameObject.tag == "Floor")
+        {
+            isGrounded = true;
+            jumpCounter = 0;
+        }
+
     }
 
     void OnCollisionStay2D(Collision2D collider)
@@ -282,12 +291,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        if (collider.gameObject.tag == "Floor")
-        {
-            isGrounded = true;
-            jumpCounter = 0;
-        }
-
+      
         
     }
 }
