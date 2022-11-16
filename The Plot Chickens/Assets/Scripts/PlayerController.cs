@@ -56,25 +56,30 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             isFacingRight = true;
-          
+
             transform.position += Vector3.right * speed * Time.deltaTime;
             anim.Play("Run");
         }
         else if (Input.GetKey(KeyCode.A))
         {
             isFacingRight = false;
- 
+
             transform.position += -Vector3.right * speed * Time.deltaTime;
             anim.Play("Run");
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            anim.Play("Attack");
         }
         else if (isGrounded)
         {
             jumpCounter = 0;
             anim.Play("Idle");
+
         }
 
         //Jump
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             Jump();
         }
@@ -173,7 +178,7 @@ public class PlayerController : MonoBehaviour
     private void Flip()
     {
         if (transform.localEulerAngles.y != 180 && !isFacingRight)
-        { 
+        {
             transform.Rotate(0f, 180f, 0f);
         }
         else if (transform.localEulerAngles.y != 0 && isFacingRight)
@@ -182,29 +187,11 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(0f, -180f, 0f);
         }
 
-        /*Vector2 localScale = transform.localScale;
-
-        if (!isFacingRight)
-        {
-           
-        }
-        if (!isFacingRight)
-        {
-            rb.GetComponent<SpriteRenderer>().flipX = true;
-        }
-
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
-        {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x = -1f;
-            transform.localScale = localScale;
-        }*/
     }
 
     void Dashing()
     {
-        if (Input.GetKeyDown(KeyCode.W) && canDash)
+        if (Input.GetKey(KeyCode.LeftShift) && canDash)
         {
             Debug.Log("Dash");
             anim.Play("Dash");
@@ -254,13 +241,15 @@ public class PlayerController : MonoBehaviour
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
-        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        rb.velocity = new Vector2(transform.localRotation.x * dashingPower, 0f);
         yield return new WaitForSeconds(dashingTime);
         rb.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
+
+   
 
     void OnTriggerStay2D(Collider2D collider)
     {
@@ -284,6 +273,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.S))
             {
+                anim.Play("Attack");
                 counter++;
                 if (counter == 3)
                 {
