@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -40,8 +41,10 @@ public class PlayerController : MonoBehaviour
     private int counter = 0;
     public bool isFacingRight = true;
 
+    private GameObject player;
     void Start()
     {
+        player = this.gameObject;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<CapsuleCollider2D>();
@@ -51,9 +54,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
+        if (player.transform.position.y < -19)
+        {
+            Scene scene = SceneManager.GetActiveScene(); 
+            SceneManager.LoadScene(scene.name);
+        }
 
-        //Movement
-        if (Input.GetKey(KeyCode.D))
+            //Movement
+            if (Input.GetKey(KeyCode.D))
         {
             isFacingRight = true;
 
@@ -264,7 +272,10 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
             jumpCounter = 0;
         }
-
+        if (collider.gameObject.name == "Catsassin" && Input.GetKey(KeyCode.S))
+        {
+            SceneManager.LoadScene("Level 1");
+        }
     }
 
     void OnCollisionStay2D(Collision2D collider)
@@ -278,6 +289,7 @@ public class PlayerController : MonoBehaviour
                 if (counter == 3)
                 {
                     Destroy(collider.gameObject);
+                    
                 }
             }
         }
