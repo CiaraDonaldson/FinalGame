@@ -15,6 +15,6 @@ public class AssassinRun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(rb.velocity.y, 10);
+        rb.velocity = transform.right * 5;
     }
 }
