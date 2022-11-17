@@ -187,7 +187,7 @@ public class PlayerController : MonoBehaviour
     {
 
 
-        /*if (transform.localEulerAngles.y != 180 && !isFacingRight)
+        if (transform.localEulerAngles.y != 180 && !isFacingRight)
         {
             transform.Rotate(0f, 180f, 0f);
         }
@@ -195,7 +195,7 @@ public class PlayerController : MonoBehaviour
         {
 
             transform.Rotate(0f, -180f, 0f);
-        }*/
+        }
 
     }
 
