@@ -185,7 +185,9 @@ public class PlayerController : MonoBehaviour
 
     private void Flip()
     {
-        if (transform.localEulerAngles.y != 180 && !isFacingRight)
+
+
+        /*if (transform.localEulerAngles.y != 180 && !isFacingRight)
         {
             transform.Rotate(0f, 180f, 0f);
         }
@@ -193,7 +195,7 @@ public class PlayerController : MonoBehaviour
         {
 
             transform.Rotate(0f, -180f, 0f);
-        }
+        }*/
 
     }
 
@@ -249,7 +251,7 @@ public class PlayerController : MonoBehaviour
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
-        rb.velocity = new Vector2(transform.localRotation.x * dashingPower, 0f);
+        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         yield return new WaitForSeconds(dashingTime);
         rb.gravityScale = originalGravity;
         isDashing = false;
