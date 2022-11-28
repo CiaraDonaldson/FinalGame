@@ -61,17 +61,17 @@ public class PlayerController : MonoBehaviour
         }
 
             //Movement
-            if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             isFacingRight = true;
-
+            //Flip();
             transform.position += Vector3.right * speed * Time.deltaTime;
             anim.Play("Run");
         }
         else if (Input.GetKey(KeyCode.A))
         {
             isFacingRight = false;
-
+           // Flip();
             transform.position += -Vector3.right * speed * Time.deltaTime;
             anim.Play("Run");
         }
@@ -129,11 +129,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    /*public bool isGrounded()
-    {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, .25f, groundLayer);
-        return raycastHit.collider != null;
-    }*/
+
 
     private void Jump()
     {
@@ -142,19 +138,18 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
         {
             Debug.Log("JUMP");
-
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             anim.Play("Jump");
         }
 
         if (jumpCounter < extraJumps)
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpingPower), ForceMode2D.Impulse);
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             isGrounded = false;
             anim.Play("Jump");
             jumpCounter += 1;
         }
-        if (jumpCounter == extraJumps)
+        if (jumpCounter == extraJumps)      
         {
             return;
         }
@@ -188,14 +183,22 @@ public class PlayerController : MonoBehaviour
 
 
         if (transform.localEulerAngles.y != 180 && !isFacingRight)
-        {
-            transform.Rotate(0f, 180f, 0f);
-        }
-        else if (transform.localEulerAngles.y != 0 && isFacingRight)
-        {
+         {
+             transform.Rotate(0f, 180f, 0f);
+         }
+         else if (transform.localEulerAngles.y != 0 && isFacingRight)
+         {
 
-            transform.Rotate(0f, -180f, 0f);
-        }
+             transform.Rotate(0f, -180f, 0f);
+         }
+
+        /* if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }*/
 
     }
 
@@ -247,19 +250,49 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Dash()
     {
-        canDash = false;
+         canDash = false;
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
-        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        //rb.velocity = new Vector3(rb.velocity.y, dashingPower);
+        //rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        //rb.AddForce(new Vector2(0f, dashingPower));
+        rb.AddForce(transform.forward * Time.deltaTime * dashingPower , ForceMode2D.Impulse);
         yield return new WaitForSeconds(dashingTime);
         rb.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+        /*if (isFacingRight)
+        {
+            canDash = false;
+            isDashing = true;
+            rb.AddForce(transform.right * dashingPower);
+            float originalGravity = rb.gravityScale;
+            rb.gravityScale = 0f;
+            yield return new WaitForSeconds(dashingTime);
+            isDashing = false;
+            rb.gravityScale = originalGravity;
+            yield return new WaitForSeconds(dashingCooldown);
+            canDash = true;
+        }
+
+        if (!isFacingRight)
+        {
+            canDash = false;
+            isDashing = true;
+            rb.AddForce(-transform.right * dashingPower);
+            float originalGravity = rb.gravityScale;
+            rb.gravityScale = 0f;
+            yield return new WaitForSeconds(dashingTime);
+            isDashing = false;
+            rb.gravityScale = originalGravity;
+            yield return new WaitForSeconds(dashingCooldown);
+            canDash = true;
+        }*/
     }
 
-   
+
 
     void OnTriggerStay2D(Collider2D collider)
     {
