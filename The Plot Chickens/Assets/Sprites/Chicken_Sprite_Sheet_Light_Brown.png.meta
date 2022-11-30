@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9af1ae69bd3d90e43ab067e18b844034
+guid: 2306c17ab7c7a2a42a2cfe898994a190
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,34 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: King_Mewrthur_Attack_4_0
+      name: Chicken_Sprite_Sheet_Light_Brown_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 541
-        width: 26
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8a1994c81222800429e5cba262b548b9
-      internalID: 1254142845
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: King_Mewrthur_Attack_4_1
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 483
+        x: 2
+        y: 98
         width: 28
-        height: 31
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5f15edbffadff84290ce7ab685f42db
-      internalID: 1943736461
+      spriteID: 7a50e377ceab0f34db5df005180d97c6
+      internalID: -23409761
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: King_Mewrthur_Attack_4_2
+      name: Chicken_Sprite_Sheet_Light_Brown_1
       rect:
         serializedVersion: 2
-        x: 14
-        y: 425
-        width: 22
-        height: 29
+        x: 32
+        y: 98
+        width: 30
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6ad4d5e54021584cba73c8e805c9a43
-      internalID: 821217671
+      spriteID: 5e46d35fe5bf3584e8609ad9ff488897
+      internalID: -1464603866
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: King_Mewrthur_Attack_4_3
+      name: Chicken_Sprite_Sheet_Light_Brown_2
       rect:
         serializedVersion: 2
-        x: 33
-        y: 438
-        width: 4
-        height: 4
+        x: 66
+        y: 98
+        width: 28
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2a91d412d02e604ebc69e836981c654
-      internalID: -1754378220
+      spriteID: 21f73e4006a5b7949b56e5bf8af045b0
+      internalID: 1690442583
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: King_Mewrthur_Attack_4_4
+      name: Chicken_Sprite_Sheet_Light_Brown_3
       rect:
         serializedVersion: 2
-        x: 12
-        y: 382
-        width: 5
-        height: 8
+        x: 96
+        y: 98
+        width: 30
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,20 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c064e128f8d30d74b9c2b44cb77878b3
-      internalID: 1246255239
+      spriteID: 2ec04e8c519aba840ba2e5899024a5cd
+      internalID: -603759874
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: King_Mewrthur_Attack_4_5
+      name: Chicken_Sprite_Sheet_Light_Brown_4
       rect:
         serializedVersion: 2
-        x: 14
-        y: 365
-        width: 25
-        height: 35
+        x: 2
+        y: 66
+        width: 28
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,20 +215,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7867a735c10a8864fa715b82747653cd
-      internalID: -591822237
+      spriteID: c6b2ff0c89069dd42b172fdfad2fe866
+      internalID: -685628876
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: King_Mewrthur_Attack_4_6
+      name: Chicken_Sprite_Sheet_Light_Brown_5
       rect:
         serializedVersion: 2
-        x: 12
-        y: 320
-        width: 27
-        height: 21
+        x: 34
+        y: 66
+        width: 28
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,20 +236,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c50cef7253118d947808ffc91478b7eb
-      internalID: 1953131419
+      spriteID: b6bf5cd8fd593fd48b78bd6d9bb73f6a
+      internalID: 657673617
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: King_Mewrthur_Attack_4_7
+      name: Chicken_Sprite_Sheet_Light_Brown_6
       rect:
         serializedVersion: 2
-        x: 6
-        y: 294
-        width: 40
-        height: 14
+        x: 66
+        y: 66
+        width: 28
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,20 +257,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 891e550cdae1a2e4ea69a078164aa9b5
-      internalID: -591651374
+      spriteID: 9cdcc9916e089c948bd49500419db710
+      internalID: -1318749865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: King_Mewrthur_Attack_4_9
+      name: Chicken_Sprite_Sheet_Light_Brown_7
       rect:
         serializedVersion: 2
-        x: 6
-        y: 242
-        width: 71
-        height: 15
+        x: 98
+        y: 66
+        width: 28
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,20 +278,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5cb346b358e457043adbebd9680693c4
-      internalID: -2065963091
+      spriteID: ad963c6f3ba8e9149adb8b7f22fa83af
+      internalID: -2084448746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: King_Mewrthur_Attack_4_10
+      name: Chicken_Sprite_Sheet_Light_Brown_8
       rect:
         serializedVersion: 2
-        x: 13
-        y: 268
-        width: 58
-        height: 15
+        x: 2
+        y: 34
+        width: 28
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,20 +299,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49a14aa9f2c0ac6409eaba3af27ed8d1
-      internalID: -2083131108
+      spriteID: 1e506209ff463ee4bb78824e4bb8fd6e
+      internalID: 323359529
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: King_Mewrthur_Attack_4_13
+      name: Chicken_Sprite_Sheet_Light_Brown_9
       rect:
         serializedVersion: 2
-        x: 0
-        y: 200
-        width: 80
-        height: 31
+        x: 34
+        y: 34
+        width: 28
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -341,20 +320,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 163116a141597894e9b2243269628496
-      internalID: 696448489
+      spriteID: 89321fa6d1379314984288dddf503acf
+      internalID: 1037397173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: King_Mewrthur_Attack_4_14
+      name: Chicken_Sprite_Sheet_Light_Brown_10
       rect:
         serializedVersion: 2
-        x: 1
-        y: 164
-        width: 17
-        height: 18
+        x: 66
+        y: 34
+        width: 28
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -362,20 +341,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c2a0a9898faf57438f22df606bcfcc7
-      internalID: 715568619
+      spriteID: a94bbb98f3368e645a82e81f35e3cb16
+      internalID: 900318831
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: King_Mewrthur_Attack_4_16
+      name: Chicken_Sprite_Sheet_Light_Brown_11
       rect:
         serializedVersion: 2
-        x: 1
-        y: 142
-        width: 17
-        height: 40
+        x: 98
+        y: 34
+        width: 28
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -383,20 +362,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ddfc971c032076945a12a794b72b551b
-      internalID: 511991531
+      spriteID: 0d73512e1afff8b4a802510d2ee9a1cd
+      internalID: -665553047
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: King_Mewrthur_Attack_4_18
+      name: Chicken_Sprite_Sheet_Light_Brown_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 84
-        width: 14
-        height: 40
+        x: 2
+        y: 2
+        width: 28
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -404,20 +383,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b9489f8d683b224b9204e6d2f180086
-      internalID: 994896061
+      spriteID: 197d2c95bdccae5498b9bbcbdf5d0640
+      internalID: 1094480486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: King_Mewrthur_Attack_4_19
+      name: Chicken_Sprite_Sheet_Light_Brown_13
       rect:
         serializedVersion: 2
-        x: 1
-        y: 26
-        width: 13
-        height: 37
+        x: 32
+        y: 2
+        width: 30
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -425,20 +404,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f7f6ea9aa865f54db26865ff7c37515
-      internalID: -1289212108
+      spriteID: 40c5052af43c82c48b2ab8aa438c117f
+      internalID: 1000982511
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: King_Mewrthur_Attack_4_20
+      name: Chicken_Sprite_Sheet_Light_Brown_14
       rect:
         serializedVersion: 2
-        x: 1
-        y: 0
-        width: 13
-        height: 15
+        x: 64
+        y: 2
+        width: 30
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -446,8 +425,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed0546dc3ebeb144c88d6179db7e3174
-      internalID: -1701746508
+      spriteID: 1ace2402eff4d8144b12cbc7f5910753
+      internalID: -139451656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chicken_Sprite_Sheet_Light_Brown_15
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 2
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea3033782f080e64d8fd907f2903c065
+      internalID: 1385926295
       vertices: []
       indices: 
       edges: []
@@ -463,27 +463,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      King_Mewrthur_Attack_4_10: -2083131108
-      King_Mewrthur_Attack_4_15: 1024316468
-      King_Mewrthur_Attack_4_18: 994896061
-      King_Mewrthur_Attack_4_7: -591651374
-      King_Mewrthur_Attack_4_8: 250960712
-      King_Mewrthur_Attack_4_20: -1701746508
-      King_Mewrthur_Attack_4_0: 1254142845
-      King_Mewrthur_Attack_4_11: 275818205
-      King_Mewrthur_Attack_4_1: 1943736461
-      King_Mewrthur_Attack_4_9: -2065963091
-      King_Mewrthur_Attack_4_12: 861564332
-      King_Mewrthur_Attack_4_14: 715568619
-      King_Mewrthur_Attack_4_16: 511991531
-      King_Mewrthur_Attack_4_6: 1953131419
-      King_Mewrthur_Attack_4_13: 696448489
-      King_Mewrthur_Attack_4_3: -1754378220
-      King_Mewrthur_Attack_4_5: -591822237
-      King_Mewrthur_Attack_4_17: -177541510
-      King_Mewrthur_Attack_4_2: 821217671
-      King_Mewrthur_Attack_4_19: -1289212108
-      King_Mewrthur_Attack_4_4: 1246255239
+      Chicken_Sprite_Sheet_Light_Brown_11: -665553047
+      Chicken_Sprite_Sheet_Light_Brown_1: -1464603866
+      Chicken_Sprite_Sheet_Light_Brown_0: -23409761
+      Chicken_Sprite_Sheet_Light_Brown_7: -2084448746
+      Chicken_Sprite_Sheet_Light_Brown_13: 1000982511
+      Chicken_Sprite_Sheet_Light_Brown_10: 900318831
+      Chicken_Sprite_Sheet_Light_Brown_5: 657673617
+      Chicken_Sprite_Sheet_Light_Brown_15: 1385926295
+      Chicken_Sprite_Sheet_Light_Brown_3: -603759874
+      Chicken_Sprite_Sheet_Light_Brown_4: -685628876
+      Chicken_Sprite_Sheet_Light_Brown_9: 1037397173
+      Chicken_Sprite_Sheet_Light_Brown_6: -1318749865
+      Chicken_Sprite_Sheet_Light_Brown_12: 1094480486
+      Chicken_Sprite_Sheet_Light_Brown_8: 323359529
+      Chicken_Sprite_Sheet_Light_Brown_2: 1690442583
+      Chicken_Sprite_Sheet_Light_Brown_14: -139451656
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
