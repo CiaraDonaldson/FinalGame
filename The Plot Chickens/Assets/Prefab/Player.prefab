@@ -66,6 +66,7 @@ MonoBehaviour:
   alert: {fileID: 345366963652778901, guid: 61017c8fb8c51654885cb46a7d2aadeb, type: 3}
   isGrounded: 1
   isFacingRight: 1
+  refScript: {fileID: 782595812182722286, guid: 46d7c1f95328e9e44a7dac1241224add, type: 3}
 --- !u!70 &4827183854293320189
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
