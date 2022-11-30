@@ -42,7 +42,8 @@ public class PlayerController : MonoBehaviour
     private int counter = 0;
     public bool isFacingRight = true;
 
-    
+    public GameObject refScript;
+
     private GameObject player;
     void Start()
     {
@@ -51,6 +52,8 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<CapsuleCollider2D>();
         circleCollider = GetComponent<CircleCollider2D>();
+        refScript.GetComponent<playAnim>();
+
     }
 
     void Update()
@@ -330,6 +333,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.S))
             {
                 anim.Play("Attack");
+
                 counter++;
                 if (counter == 3)
                 {
