@@ -6,6 +6,7 @@ public class AssassinRun : MonoBehaviour
 {
 
     private Rigidbody2D rb;
+    public bool stop = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,17 @@ public class AssassinRun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = transform.right * 5;
+        if (!stop)
+        {
+            rb.velocity = transform.right * 8;
+        }
+        
     }
+
+    void OnCollisionEnter2D(Collision2D collision) 
+    {
+        stop = true;
+    
+    }
+    
 }

@@ -62,7 +62,8 @@ MonoBehaviour:
   extraJumps: 2
   jumpCounter: 0
   isDashing: 0
-  dashingPower: 15
+  dashingPower: 2
+  alert: {fileID: 345366963652778901, guid: 61017c8fb8c51654885cb46a7d2aadeb, type: 3}
   isGrounded: 1
   isFacingRight: 1
 --- !u!70 &4827183854293320189
