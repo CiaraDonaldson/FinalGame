@@ -214,8 +214,8 @@ public class PlayerController : MonoBehaviour
 
     void Dashing()
     {
-        Scene scene = SceneManager.GetActiveScene();
-        if(scene.name == "")
+        
+
         if (Input.GetKey(KeyCode.LeftShift) && canDash)
         {
             Debug.Log("Dash");
