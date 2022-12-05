@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Jumps")]
     [SerializeField] private float jumpingPower = 10f;
-    public int extraJumps = 2;
+    public int extraJumps = 1;
     public int jumpCounter = 0;
 
     [Header("Dash")]
