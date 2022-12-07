@@ -18,7 +18,7 @@ public class AssassinRun : MonoBehaviour
     {
         if (!stop)
         {
-            rb.velocity = transform.right * 8;
+            rb.velocity = transform.right * 7;
         }
         
     }
