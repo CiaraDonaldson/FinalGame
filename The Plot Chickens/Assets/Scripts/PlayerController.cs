@@ -322,7 +322,7 @@ public class PlayerController : MonoBehaviour
         }
         if (collider.gameObject.name == "Catsassin" && Input.GetKey(KeyCode.S))
         {
-            SceneManager.LoadScene("Level 1");
+            SceneManager.LoadScene("Ending");
         }
     }
 
