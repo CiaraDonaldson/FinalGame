@@ -7,6 +7,6 @@ public class LoadOnActivation : MonoBehaviour
 {
     void OnEnable()
     {
-       SceneManager.LoadScene("Level 1", LoadSceneMode.Single);
+       SceneManager.LoadScene("Level 1", LoadSceneMode.Additive);
     }
 }
