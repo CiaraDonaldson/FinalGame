@@ -33,8 +33,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashingPower = 15f;
     private float dashingTime = 1f;
     private float dashingCooldown = 1f;
-    private bool canDash = true;
+    [SerializeField]private bool canDash = true;
     public GameObject alert;
+    public SpriteRenderer alertSprite;
 
     [Header("Floor Check")]
     public bool isGrounded = true;
@@ -53,6 +54,8 @@ public class PlayerController : MonoBehaviour
         boxCollider = GetComponent<CapsuleCollider2D>();
         circleCollider = GetComponent<CircleCollider2D>();
         refScript.GetComponent<playAnim>();
+        alert = transform.GetChild(1).gameObject;
+        alertSprite = alert.GetComponent<SpriteRenderer>();
 
     }
 
@@ -112,11 +115,16 @@ public class PlayerController : MonoBehaviour
 
         if (canDash)
         {
-            alert.SetActive(true);
+            //alert.SetActive(true);
+            print("dashedAlert");
+            alertSprite.color = new Color (255,255,255,1);
+            //color.a = 1;
         }
         else
         {
-            alert.SetActive(false);
+            print("dashedAlertELSE");
+            //alert.SetActive(false);
+            alertSprite.color = new Color (255, 255, 255, 0);
         }
 
         WallJump();
