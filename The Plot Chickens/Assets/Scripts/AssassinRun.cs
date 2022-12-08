@@ -8,6 +8,7 @@ public class AssassinRun : MonoBehaviour
     private Rigidbody2D rb;
     public bool stop = false;
     private Animator anim;
+    public int run = 7;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,7 @@ public class AssassinRun : MonoBehaviour
     {
         if (!stop)
         {
-            rb.velocity = transform.right * 7;
+            rb.velocity = transform.right * run;
         }
         anim.Play("Run");
     }
