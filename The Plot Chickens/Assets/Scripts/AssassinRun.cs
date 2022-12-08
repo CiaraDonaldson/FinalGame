@@ -7,10 +7,13 @@ public class AssassinRun : MonoBehaviour
 
     private Rigidbody2D rb;
     public bool stop = false;
+    private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -20,7 +23,7 @@ public class AssassinRun : MonoBehaviour
         {
             rb.velocity = transform.right * 7;
         }
-        
+        anim.Play("Run");
     }
 
     void OnCollisionEnter2D(Collision2D collision) 
