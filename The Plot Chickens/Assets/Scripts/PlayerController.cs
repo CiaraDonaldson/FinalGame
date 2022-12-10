@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
 
     [Header("Jumps")]
-    [SerializeField] private float jumpingPower = 10f;
+    [SerializeField] private float jumpingPower = 15f;
     public int extraJumps = 1;
     public int jumpCounter = 0;
 
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashingPower = 15f;
     private float dashingTime = 1f;
     private float dashingCooldown = 1f;
-    [SerializeField]private bool canDash = true;
+    [SerializeField] private bool canDash = true;
     public GameObject alert;
     public SpriteRenderer alertSprite;
 
@@ -43,9 +43,12 @@ public class PlayerController : MonoBehaviour
     private int counter = 0;
     public bool isFacingRight = true;
 
-    public GameObject refScript;
-
+    public playAnim refScript;
     private GameObject player;
+ 
+    [SerializeField] 
+    private float glidingSpeed;
+    private float initialGravityScale;
     void Start()
     {
         player = this.gameObject;
@@ -53,9 +56,11 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<CapsuleCollider2D>();
         circleCollider = GetComponent<CircleCollider2D>();
-        refScript.GetComponent<playAnim>();
+        //refScript = Find.GameObject.name("Cage");
         alert = transform.GetChild(1).gameObject;
         alertSprite = alert.GetComponent<SpriteRenderer>();
+
+        initialGravityScale = rb.gravityScale;
 
     }
 
@@ -88,11 +93,14 @@ public class PlayerController : MonoBehaviour
 
         }
 
+       
+
         //Jump
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             Jump();
         }
+
         //DoubleJump
         if (jumpCounter < extraJumps)
         {
@@ -104,13 +112,30 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
-
         //Adjustable jump height
-        //if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0)
-        // {
-        //     rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
-        // }
+        if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
+        }
+
+        //Glide
+        if (Input.GetKeyDown(KeyCode.Space) && rb.velocity.y <= 0)
+        {
+            rb.gravityScale = 0;
+            rb.velocity = new Vector2(rb.velocity.x, glidingSpeed);
+
+            anim.Play("Jump 1");
+
+        }
+        else 
+        {
+            rb.gravityScale = initialGravityScale;
+        
+        }
+
+
+
+
 
 
         if (canDash)
@@ -127,7 +152,7 @@ public class PlayerController : MonoBehaviour
             alertSprite.color = new Color (255, 255, 255, 0);
         }
 
-        WallJump();
+        //WallJump();
         Dashing();
         Flip();
 
@@ -174,7 +199,7 @@ public class PlayerController : MonoBehaviour
         //DONT TOUCH
 
 
-        else if (OnWall() && !isGrounded)
+        /*else if (OnWall() && !isGrounded)
         {
             
            if (horizontal == 0)
@@ -191,7 +216,7 @@ public class PlayerController : MonoBehaviour
         }
 
         
-        wallJumpCooldown = 0;
+        wallJumpCooldown = 0;*/
 
     }
 
@@ -210,6 +235,8 @@ public class PlayerController : MonoBehaviour
          }
 
     }
+
+
 
     public IEnumerator Dying()
     {
@@ -234,7 +261,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void WallJump()
+    /*private void WallJump()
     {
         if (wallJumpCooldown > 0.2f)
         {
@@ -265,7 +292,7 @@ public class PlayerController : MonoBehaviour
         {
             wallJumpCooldown += Time.deltaTime;
         }
-    }
+    }*/
 
 
 
