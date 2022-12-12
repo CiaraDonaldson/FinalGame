@@ -49,6 +49,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] 
     private float glidingSpeed;
     private float initialGravityScale;
+
+
+    public AudioSource dashAudio;
+    public AudioSource jumpAudio;
+    public AudioSource kickAudio;
+
     void Start()
     {
         player = this.gameObject;
@@ -85,6 +91,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKey(KeyCode.S))
         {
             anim.Play("Attack");
+            kickAudio.Play();
         }
         else if (isGrounded)
         {
@@ -116,6 +123,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
+            
         }
 
         //Glide
@@ -125,6 +133,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, glidingSpeed);
 
             anim.Play("Jump 1");
+            dashAudio.Play();
 
         }
         else 
@@ -183,6 +192,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("JUMP");
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             anim.Play("Jump");
+            
         }
 
         if (jumpCounter < extraJumps)
@@ -191,6 +201,7 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
             anim.Play("Jump");
             jumpCounter += 1;
+            jumpAudio.Play();
         }
         if (jumpCounter == extraJumps)      
         {
@@ -244,6 +255,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(2f);
             Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
+
         
     }
 
@@ -256,6 +268,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Dash");
             anim.Play("Dash");
             StartCoroutine(Dash());
+            dashAudio.Play();
 
         }
 
