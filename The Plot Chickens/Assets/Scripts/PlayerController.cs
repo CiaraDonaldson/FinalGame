@@ -20,8 +20,8 @@ public class PlayerController : MonoBehaviour
 
     private float wallJumpCooldown;
     private float horizontal;
-    private float speed = 8f;
-
+    private float speed = 10f;
+    public int counter = 0;
 
     [Header("Jumps")]
     [SerializeField] private float jumpingPower = 15f;
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     [Header("Floor Check")]
     public bool isGrounded = true;
     private Animator anim;
-    private int counter = 0;
+
     public bool isFacingRight = true;
 
     public playAnim refScript;
@@ -128,19 +128,26 @@ public class PlayerController : MonoBehaviour
         }
 
         //Glide
-        if (Input.GetKeyDown(KeyCode.Space) && rb.velocity.y <= 0)
+        if (counter <= 10)
         {
-            rb.gravityScale = 0;
-            rb.velocity = new Vector2(rb.velocity.x, glidingSpeed);
+            if (Input.GetKeyDown(KeyCode.Space) && rb.velocity.y <= 0)
+            {
+                rb.gravityScale = 0;
+                rb.velocity = new Vector2(rb.velocity.x, glidingSpeed);
 
-            anim.Play("Jump 1");
-            dashAudio.Play();
+                anim.Play("Jump 1");
+                dashAudio.Play();
+                counter++;
+            }
+            else
+            {
+                rb.gravityScale = initialGravityScale;
+            }
 
         }
-        else
+        else 
         {
-            rb.gravityScale = initialGravityScale;
-
+            rb.gravityScale = 2;
         }
 
 
@@ -368,6 +375,7 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
             jumpCounter = 0;
+            counter = 0;
         }
 
         if (collider.gameObject.name == "Catsassin" && Input.GetKey(KeyCode.S))

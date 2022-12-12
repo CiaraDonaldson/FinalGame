@@ -10162,6 +10162,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Alert
       objectReference: {fileID: 0}
+    - target: {fileID: 345366963652778901, guid: 61017c8fb8c51654885cb46a7d2aadeb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 345366963652778922, guid: 61017c8fb8c51654885cb46a7d2aadeb, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -10172,7 +10176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 345366963652778922, guid: 61017c8fb8c51654885cb46a7d2aadeb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.24
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 345366963652778922, guid: 61017c8fb8c51654885cb46a7d2aadeb, type: 3}
       propertyPath: m_LocalPosition.z
