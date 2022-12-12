@@ -45,8 +45,8 @@ public class PlayerController : MonoBehaviour
 
     public playAnim refScript;
     private GameObject player;
- 
-    [SerializeField] 
+
+    [SerializeField]
     private float glidingSpeed;
     private float initialGravityScale;
 
@@ -68,12 +68,13 @@ public class PlayerController : MonoBehaviour
 
         initialGravityScale = rb.gravityScale;
 
+        refScript = FindObjectOfType<playAnim>();
     }
 
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
-        
+
 
         //Movement
         if (Input.GetKey(KeyCode.D))
@@ -100,7 +101,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-       
+
 
         //Jump
         if (Input.GetKey(KeyCode.Space) && isGrounded)
@@ -123,7 +124,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
-            
+
         }
 
         //Glide
@@ -136,10 +137,10 @@ public class PlayerController : MonoBehaviour
             dashAudio.Play();
 
         }
-        else 
+        else
         {
             rb.gravityScale = initialGravityScale;
-        
+
         }
 
 
@@ -151,14 +152,14 @@ public class PlayerController : MonoBehaviour
         {
             //alert.SetActive(true);
             print("dashedAlert");
-            alertSprite.color = new Color (255,255,255,1);
+            alertSprite.color = new Color(255, 255, 255, 1);
             //color.a = 1;
         }
         else
         {
             print("dashedAlertELSE");
             //alert.SetActive(false);
-            alertSprite.color = new Color (255, 255, 255, 0);
+            alertSprite.color = new Color(255, 255, 255, 0);
         }
 
         //WallJump();
@@ -178,7 +179,7 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(boxCollider.bounds.size, new Vector2(transform.localScale.x, 0), Color.red, 0.1f);
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
         return raycastHit.collider != null;
-        
+
     }
 
 
@@ -192,7 +193,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("JUMP");
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             anim.Play("Jump");
-            
+
         }
 
         if (jumpCounter < extraJumps)
@@ -203,7 +204,7 @@ public class PlayerController : MonoBehaviour
             jumpCounter += 1;
             jumpAudio.Play();
         }
-        if (jumpCounter == extraJumps)      
+        if (jumpCounter == extraJumps)
         {
             return;
         }
@@ -236,14 +237,14 @@ public class PlayerController : MonoBehaviour
     {
 
         if (transform.localEulerAngles.y != 180 && !isFacingRight)
-         {
-             transform.Rotate(0f, 180f, 0f);
-         }
-         else if (transform.localEulerAngles.y != 0 && isFacingRight)
-         {
+        {
+            transform.Rotate(0f, 180f, 0f);
+        }
+        else if (transform.localEulerAngles.y != 0 && isFacingRight)
+        {
 
-             transform.Rotate(0f, -180f, 0f);
-         }
+            transform.Rotate(0f, -180f, 0f);
+        }
 
     }
 
@@ -251,17 +252,17 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator Dying()
     {
-            anim.Play("Death");
-            yield return new WaitForSeconds(2f);
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+        anim.Play("Death");
+        yield return new WaitForSeconds(2f);
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
 
-        
+
     }
 
     void Dashing()
     {
-        
+
 
         if (Input.GetKey(KeyCode.LeftShift) && canDash)
         {
@@ -312,44 +313,44 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Dash()
     {
         if (isFacingRight)
-      {
-         canDash = false;
-         isDashing = true;
-         float originalGravity = rb.gravityScale;
-         rb.gravityScale = 0f;
-         transform.position += Vector3.right * dashingPower;
-         yield return new WaitForSeconds(.02f);
-         transform.position += Vector3.right * dashingPower;
-         yield return new WaitForSeconds(.02f);
-         transform.position += Vector3.right * dashingPower;
-         yield return new WaitForSeconds(dashingTime);
-         isDashing = false;
-         rb.gravityScale = originalGravity;
-         anim.Play("Dash");
-         yield return new WaitForSeconds(dashingCooldown);
-         canDash = true;
+        {
+            canDash = false;
+            isDashing = true;
+            float originalGravity = rb.gravityScale;
+            rb.gravityScale = 0f;
+            transform.position += Vector3.right * dashingPower;
+            yield return new WaitForSeconds(.02f);
+            transform.position += Vector3.right * dashingPower;
+            yield return new WaitForSeconds(.02f);
+            transform.position += Vector3.right * dashingPower;
+            yield return new WaitForSeconds(dashingTime);
+            isDashing = false;
+            rb.gravityScale = originalGravity;
+            anim.Play("Dash");
+            yield return new WaitForSeconds(dashingCooldown);
+            canDash = true;
 
 
         }
 
         if (!isFacingRight)
         {
-          canDash = false;
-          isDashing = true;
-          transform.position -= Vector3.right * dashingPower;
-          yield return new WaitForSeconds(.02f);
-          transform.position -= Vector3.right * dashingPower;
-          yield return new WaitForSeconds(.02f);
-          transform.position -= Vector3.right * dashingPower;
-          float originalGravity = rb.gravityScale;
-          rb.gravityScale = 0f;
-          yield return new WaitForSeconds(dashingTime);
-          isDashing = false;
-          rb.gravityScale = originalGravity;
-          anim.Play("Dash");
-          yield return new WaitForSeconds(dashingCooldown);
-          canDash = true;
-          
+            canDash = false;
+            isDashing = true;
+            transform.position -= Vector3.right * dashingPower;
+            yield return new WaitForSeconds(.02f);
+            transform.position -= Vector3.right * dashingPower;
+            yield return new WaitForSeconds(.02f);
+            transform.position -= Vector3.right * dashingPower;
+            float originalGravity = rb.gravityScale;
+            rb.gravityScale = 0f;
+            yield return new WaitForSeconds(dashingTime);
+            isDashing = false;
+            rb.gravityScale = originalGravity;
+            anim.Play("Dash");
+            yield return new WaitForSeconds(dashingCooldown);
+            canDash = true;
+
         }
     }
 
@@ -368,29 +369,27 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
             jumpCounter = 0;
         }
+
         if (collider.gameObject.name == "Catsassin" && Input.GetKey(KeyCode.S))
         {
             SceneManager.LoadScene("Ending");
         }
-    }
 
-    void OnCollisionStay2D(Collision2D collider)
-    {
         if (collider.gameObject.name == "Cage")
         {
             if (Input.GetKeyDown(KeyCode.S))
             {
                 anim.Play("Attack");
-
+                playAnim.instance.playIt();
                 counter++;
                 if (counter == 3)
                 {
                     Destroy(collider.gameObject);
-                    
+
                 }
             }
+
         }
-      
-        
     }
 }
+
