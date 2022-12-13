@@ -62,12 +62,9 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<CapsuleCollider2D>();
         circleCollider = GetComponent<CircleCollider2D>();
-        //refScript = Find.GameObject.name("Cage");
         alert = transform.GetChild(1).gameObject;
         alertSprite = alert.GetComponent<SpriteRenderer>();
-
         initialGravityScale = rb.gravityScale;
-
         refScript = FindObjectOfType<playAnim>();
     }
 
