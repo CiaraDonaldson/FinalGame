@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     public int cageCounter = 0;
 
     [Header("Jumps")]
-    [SerializeField] private float jumpingPower = 15f;
+    [SerializeField] private float jumpingPower = 10f;
     public int extraJumps = 1;
     public int jumpCounter = 0;
 

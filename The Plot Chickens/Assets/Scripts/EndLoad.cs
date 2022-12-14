@@ -8,7 +8,12 @@ public class EndLoad : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Restart());
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "Ending")
+        {
+            StartCoroutine(Restart());
+        }
+        
     }
 
     // Update is called once per frame
