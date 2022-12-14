@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    private IEnumerator coroutine;
+   
+
 
     private Rigidbody2D rb;
     private CapsuleCollider2D capsuleCollider;
@@ -101,10 +104,10 @@ public class PlayerController : MonoBehaviour
 
         }
 
+      
 
-
-        //Jump
-        if (Input.GetKey(KeyCode.Space) && isGrounded)
+            //Jump
+            if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             Jump();
         }
@@ -269,16 +272,21 @@ public class PlayerController : MonoBehaviour
 
     void Dashing()
     {
+       
+        coroutine = Dash();
 
-
-        if (Input.GetKey(KeyCode.LeftShift) && canDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             Debug.Log("Dash");
             anim.Play("Dash");
-            StartCoroutine(Dash());
+            StartCoroutine(coroutine);
             dashAudio.Play();
 
         }
+        /*else if (Input.anyKey | !isDashing)
+        {
+           StopCoroutine(coroutine);
+        }*/
 
     }
 
@@ -319,10 +327,11 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Dash()
     {
+        canDash = false;
+        isDashing = true;
         if (isFacingRight)
         {
-            canDash = false;
-            isDashing = true;
+            
             float originalGravity = rb.gravityScale;
             rb.gravityScale = 0f;
             transform.position += Vector3.right * dashingPower;
@@ -333,32 +342,28 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(dashingTime);
             isDashing = false;
             rb.gravityScale = originalGravity;
-            anim.Play("Dash");
-            yield return new WaitForSeconds(dashingCooldown);
-            canDash = true;
-
 
         }
-
-        if (!isFacingRight)
+        else if (!isFacingRight)
         {
-            canDash = false;
-            isDashing = true;
-            transform.position -= Vector3.right * dashingPower;
-            yield return new WaitForSeconds(.02f);
-            transform.position -= Vector3.right * dashingPower;
-            yield return new WaitForSeconds(.02f);
-            transform.position -= Vector3.right * dashingPower;
             float originalGravity = rb.gravityScale;
             rb.gravityScale = 0f;
+            transform.position -= Vector3.right * dashingPower;
+            yield return new WaitForSeconds(.02f);
+            transform.position -= Vector3.right * dashingPower;
+            yield return new WaitForSeconds(.02f);
+            transform.position -= Vector3.right * dashingPower;
             yield return new WaitForSeconds(dashingTime);
             isDashing = false;
             rb.gravityScale = originalGravity;
-            anim.Play("Dash");
-            yield return new WaitForSeconds(dashingCooldown);
-            canDash = true;
 
         }
+        
+        anim.Play("Dash");
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
+
+        yield break;
     }
 
 
