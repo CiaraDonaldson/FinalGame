@@ -19640,6 +19640,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7817207600202846363, guid: 46d7c1f95328e9e44a7dac1241224add, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 782595812182722286, guid: 46d7c1f95328e9e44a7dac1241224add, type: 3}
       propertyPath: m_Name
       value: Cage

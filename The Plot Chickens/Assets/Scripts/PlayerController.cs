@@ -7,8 +7,9 @@ public class PlayerController : MonoBehaviour
 {
 
     private Rigidbody2D rb;
-    private CapsuleCollider2D boxCollider;
+    private CapsuleCollider2D capsuleCollider;
     private CircleCollider2D circleCollider;
+    private BoxCollider2D boxCollider;
 
     [Header("Layers")]
     [SerializeField] private LayerMask groundLayer;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private float horizontal;
     private float speed = 10f;
     public int counter = 0;
+    public int cageCounter = 0;
 
     [Header("Jumps")]
     [SerializeField] private float jumpingPower = 15f;
@@ -60,8 +62,9 @@ public class PlayerController : MonoBehaviour
         player = this.gameObject;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        boxCollider = GetComponent<CapsuleCollider2D>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
         circleCollider = GetComponent<CircleCollider2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         alert = transform.GetChild(1).gameObject;
         alertSprite = alert.GetComponent<SpriteRenderer>();
         initialGravityScale = rb.gravityScale;
@@ -180,8 +183,8 @@ public class PlayerController : MonoBehaviour
     private bool OnWall()
     {
 
-        Debug.DrawRay(boxCollider.bounds.size, new Vector2(transform.localScale.x, 0), Color.red, 0.1f);
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
+        Debug.DrawRay(capsuleCollider.bounds.size, new Vector2(transform.localScale.x, 0), Color.red, 0.1f);
+        RaycastHit2D raycastHit = Physics2D.BoxCast(capsuleCollider.bounds.center, capsuleCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
         return raycastHit.collider != null;
 
     }
@@ -386,8 +389,8 @@ public class PlayerController : MonoBehaviour
             {
                 anim.Play("Attack");
                 playAnim.instance.playIt();
-                counter++;
-                if (counter == 3)
+                cageCounter++;
+                if (cageCounter == 3)
                 {
                     Destroy(collider.gameObject);
 
