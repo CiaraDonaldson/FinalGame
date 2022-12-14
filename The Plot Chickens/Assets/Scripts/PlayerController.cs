@@ -72,6 +72,8 @@ public class PlayerController : MonoBehaviour
         alertSprite = alert.GetComponent<SpriteRenderer>();
         initialGravityScale = rb.gravityScale;
         refScript = FindObjectOfType<playAnim>();
+
+        Cursor.visible = false;
     }
 
     void Update()
