@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
             alertSprite.color = new Color(255, 255, 255, 0);
         }
 
-        //WallJump();
+        
         Dashing();
         Flip();
 
@@ -183,17 +183,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private bool OnWall()
-    {
-
-        Debug.DrawRay(capsuleCollider.bounds.size, new Vector2(transform.localScale.x, 0), Color.red, 0.1f);
-        RaycastHit2D raycastHit = Physics2D.BoxCast(capsuleCollider.bounds.center, capsuleCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
-        return raycastHit.collider != null;
-
-    }
-
-
-
+  
     private void Jump()
     {
 
@@ -221,25 +211,6 @@ public class PlayerController : MonoBehaviour
         //DONT TOUCH
 
 
-        /*else if (OnWall() && !isGrounded)
-        {
-            
-           if (horizontal == 0)
-            {
-
-                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-
-            }
-        }
-        else
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-
-        }
-
-        
-        wallJumpCooldown = 0;*/
-
     }
 
 
@@ -266,13 +237,10 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
-
-
     }
 
     void Dashing()
-    {
-       
+    {      
         coroutine = Dash();
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
@@ -283,45 +251,9 @@ public class PlayerController : MonoBehaviour
             dashAudio.Play();
 
         }
-        /*else if (Input.anyKey | !isDashing)
-        {
-           StopCoroutine(coroutine);
-        }*/
-
     }
 
-    /*private void WallJump()
-    {
-        if (wallJumpCooldown > 0.2f)
-        {
-            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-
-
-            if (!isGrounded && OnWall())
-            {
-                rb.gravityScale = 0;
-                rb.velocity = Vector2.zero;
-                jumpCounter = 0;
-                anim.Play("WallHold");
-
-            }
-            else
-            {
-                rb.gravityScale = 2;
-            }
-
-            if (Input.GetKeyDown("space"))
-            {
-                Jump();
-            }
-
-
-        }
-        else
-        {
-            wallJumpCooldown += Time.deltaTime;
-        }
-    }*/
+    
 
 
 
@@ -362,7 +294,6 @@ public class PlayerController : MonoBehaviour
         anim.Play("Dash");
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
-
         yield break;
     }
 
