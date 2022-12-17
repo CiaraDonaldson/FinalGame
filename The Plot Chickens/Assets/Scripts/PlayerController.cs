@@ -7,8 +7,6 @@ public class PlayerController : MonoBehaviour
 {
     private IEnumerator coroutine;
    
-
-
     private Rigidbody2D rb;
     private CapsuleCollider2D capsuleCollider;
     private CircleCollider2D circleCollider;
@@ -39,6 +37,8 @@ public class PlayerController : MonoBehaviour
     private float dashingTime = 1f;
     private float dashingCooldown = 1f;
     [SerializeField] private bool canDash = true;
+
+    [Header("Alert")]
     public GameObject alert;
     public SpriteRenderer alertSprite;
 
@@ -94,22 +94,16 @@ public class PlayerController : MonoBehaviour
             transform.position += -Vector3.right * speed * Time.deltaTime;
             anim.Play("Run");
         }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            anim.Play("Attack");
-            kickAudio.Play();
-        }
         else if (isGrounded)
         {
             jumpCounter = 0;
             anim.Play("Idle");
 
         }
+    
 
-      
-
-            //Jump
-            if (Input.GetKey(KeyCode.Space) && isGrounded)
+        //Jump
+        if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             Jump();
         }
@@ -125,6 +119,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+
         //Adjustable jump height
         if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0)
         {
@@ -139,14 +134,14 @@ public class PlayerController : MonoBehaviour
             {
                 rb.gravityScale = 0;
                 rb.velocity = new Vector2(rb.velocity.x, glidingSpeed);
-
                 anim.Play("Jump 1");
+                dashAudio.pitch = (Random.Range(0.7f, 1.3f));
                 dashAudio.Play();
                 counter++;
             }
             else
             {
-                rb.gravityScale = initialGravityScale;
+                rb.gravityScale = 2;
             }
 
         }
@@ -154,8 +149,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.gravityScale = 2;
         }
-
-
 
 
 
@@ -197,7 +190,6 @@ public class PlayerController : MonoBehaviour
             anim.Play("Jump");
 
         }
-
         if (jumpCounter < extraJumps)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
@@ -245,7 +237,7 @@ public class PlayerController : MonoBehaviour
     {      
         coroutine = Dash();
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) && canDash)
         {
             Debug.Log("Dash");
             anim.Play("Dash");
@@ -264,8 +256,7 @@ public class PlayerController : MonoBehaviour
         canDash = false;
         isDashing = true;
         if (isFacingRight)
-        {
-            
+        {            
             float originalGravity = rb.gravityScale;
             rb.gravityScale = 0f;
             transform.position += Vector3.right * dashingPower;
@@ -296,7 +287,7 @@ public class PlayerController : MonoBehaviour
         anim.Play("Dash");
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
-        yield break;
+        
     }
 
 
@@ -316,14 +307,14 @@ public class PlayerController : MonoBehaviour
             counter = 0;
         }
 
-        if (collider.gameObject.name == "Catsassin" && Input.GetKey(KeyCode.S))
+        if (collider.gameObject.name == "Catsassin" && Input.GetKey(KeyCode.LeftShift) | Input.GetKeyDown(KeyCode.RightShift) && canDash)
         {
             SceneManager.LoadScene("Ending");
         }
 
         if (collider.gameObject.name == "Cage")
         {
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.LeftShift) | Input.GetKeyDown(KeyCode.RightShift) && canDash)
             {
                 anim.Play("Attack");
                 playAnim.instance.playIt();

@@ -396,7 +396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1098402669591056634, guid: 96cdfb7e3d8446e438261df421118602, type: 3}
       propertyPath: m_text
-      value: "However, he has a lot to learn before he\u2019s ready to save his kingdom,"
+      value: "However, he has a lot to learn before he\u2019s ready to save his home,"
       objectReference: {fileID: 0}
     - target: {fileID: 1098402669591056634, guid: 96cdfb7e3d8446e438261df421118602, type: 3}
       propertyPath: m_Enabled
@@ -415,6 +415,10 @@ PrefabInstance:
       value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 1098402669591056634, guid: 96cdfb7e3d8446e438261df421118602, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+    - target: {fileID: 1098402669591056634, guid: 96cdfb7e3d8446e438261df421118602, type: 3}
       propertyPath: m_enableWordWrapping
       value: 0
       objectReference: {fileID: 0}
@@ -424,7 +428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1098402669591056634, guid: 96cdfb7e3d8446e438261df421118602, type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96cdfb7e3d8446e438261df421118602, type: 3}
@@ -1226,7 +1230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1098402669591056634, guid: 96cdfb7e3d8446e438261df421118602, type: 3}
       propertyPath: m_text
-      value: But the oracles believe that Cluckboy can save his Kingdom.
+      value: But the oracles believe that Cluckboy can save Cluck Kingdom.
       objectReference: {fileID: 0}
     - target: {fileID: 1098402669591056634, guid: 96cdfb7e3d8446e438261df421118602, type: 3}
       propertyPath: m_Enabled
@@ -1245,6 +1249,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1098402669591056634, guid: 96cdfb7e3d8446e438261df421118602, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+    - target: {fileID: 1098402669591056634, guid: 96cdfb7e3d8446e438261df421118602, type: 3}
       propertyPath: m_enableWordWrapping
       value: 0
       objectReference: {fileID: 0}
@@ -1254,7 +1262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1098402669591056634, guid: 96cdfb7e3d8446e438261df421118602, type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96cdfb7e3d8446e438261df421118602, type: 3}

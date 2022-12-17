@@ -13,13 +13,21 @@ public class EndLoad : MonoBehaviour
         {
             StartCoroutine(Restart());
         }
-        
+
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "Begin")
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                Begin();            
+            }
+        }
     }
 
    
